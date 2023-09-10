@@ -1,4 +1,5 @@
 import type { V2_MetaFunction } from "@remix-run/node";
+import { useNavigate } from "@remix-run/react";
 import ImageCarousel from "~/components/ImageCarousel/_index";
 
 export const meta: V2_MetaFunction = () => {
@@ -9,6 +10,7 @@ export const meta: V2_MetaFunction = () => {
 };
 
 export default function Index() {
+  const navigate = useNavigate();
   return (
     <div
       style={{
@@ -17,11 +19,16 @@ export default function Index() {
         width: "100vw",
         height: "100vh",
         display: "flex",
+        flexDirection: "column",
+        gap: "16px",
         justifyContent: "center",
         alignItems: "center",
       }}
     >
       <ImageCarousel />
+      <button type="button" onClick={() => navigate("/radio-test")}>
+        radio test
+      </button>
     </div>
   );
 }
